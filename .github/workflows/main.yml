@@ -16,21 +16,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_OPH_UTILITY_ROLE_ARN }}
           role-session-name: fluentbit-deploy
           aws-region: eu-west-1
+
       - name: Get ECR Registry
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v1
+
       - name: Docker meta for alpine images
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: |
             ${{ env.ECR_REPO }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
