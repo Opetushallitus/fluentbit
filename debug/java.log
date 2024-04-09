@@ -1,0 +1,264 @@
+2023-09-04T13:09:29.611+03 ERROR {} [identificationScheduler-1] ERROR fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl: post process (identification) failed for application: 1.2.246.562.11.00016356803
+fi.vm.sade.haku.RemoteServiceException: Could not create new person from  firstNames: Miriam Testi nickName: Miriam lastName: Virkki-Testi dateOfBirth: 15.04.1919 noSocialSecurityNumber: true email: hakija-58662013@oph.fi sex: 1 securityOrder: false language: RU nationality: RUS contactLanguage: suomi personOid: 1.2.246.562.24.78085612254 studentOid: null countryOfResidence: null phone: null address null postal code: null postal city: null home citynull due to conflicting data
+	at fi.vm.sade.haku.virkailija.authentication.impl.AuthenticationServiceImpl.addPerson(AuthenticationServiceImpl.java:119)
+	at fi.vm.sade.haku.oppija.postprocess.impl.ApplicationPostProcessorService.addPersonOid(ApplicationPostProcessorService.java:163)
+	at fi.vm.sade.haku.oppija.postprocess.impl.ApplicationPostProcessorService.checkStudentOid(ApplicationPostProcessorService.java:176)
+	at fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl.runIdentification(PostProcessWorkerImpl.java:148)
+	at fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl.processApplications(PostProcessWorkerImpl.java:87)
+	at fi.vm.sade.haku.oppija.postprocess.Scheduler.runProcessing(Scheduler.java:84)
+	at fi.vm.sade.haku.oppija.postprocess.Scheduler.runIdentification(Scheduler.java:71)
+	at sun.reflect.GeneratedMethodAccessor102.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:64)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:53)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalArgumentException: Unable to merge person objects with different social security numbers
+	at fi.vm.sade.haku.virkailija.authentication.Person.mergeWith(Person.java:209)
+	at fi.vm.sade.haku.virkailija.authentication.impl.AuthenticationServiceImpl.addPerson(AuthenticationServiceImpl.java:117)
+	... 18 more
+2023-09-04T13:09:46.653+03 ERROR {} [identificationScheduler-1] ERROR fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl: post process (identification) failed for application: 1.2.246.562.11.00007293742
+fi.vm.sade.haku.RemoteServiceException: Could not create new person from  firstNames: Soila Testi nickName: Soila lastName: Jutila-Testi dateOfBirth: 06.02.1995 noSocialSecurityNumber: false email: hakija-61704167@oph.fi sex: 2 securityOrder: false language: RU nationality: UKR contactLanguage: suomi personOid: 1.2.246.562.24.37715252268 studentOid: null countryOfResidence: null phone: null address null postal code: null postal city: null home citynull due to conflicting data
+	at fi.vm.sade.haku.virkailija.authentication.impl.AuthenticationServiceImpl.addPerson(AuthenticationServiceImpl.java:119)
+	at fi.vm.sade.haku.oppija.postprocess.impl.ApplicationPostProcessorService.addPersonOid(ApplicationPostProcessorService.java:163)
+	at fi.vm.sade.haku.oppija.postprocess.impl.ApplicationPostProcessorService.checkStudentOid(ApplicationPostProcessorService.java:176)
+	at fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl.runIdentification(PostProcessWorkerImpl.java:148)
+	at fi.vm.sade.haku.oppija.postprocess.impl.PostProcessWorkerImpl.processApplications(PostProcessWorkerImpl.java:87)
+	at fi.vm.sade.haku.oppija.postprocess.Scheduler.runProcessing(Scheduler.java:84)
+	at fi.vm.sade.haku.oppija.postprocess.Scheduler.runIdentification(Scheduler.java:71)
+	at sun.reflect.GeneratedMethodAccessor102.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:64)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:53)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalArgumentException: Unable to merge person objects with different social security numbers
+	at fi.vm.sade.haku.virkailija.authentication.Person.mergeWith(Person.java:209)
+	at fi.vm.sade.haku.virkailija.authentication.impl.AuthenticationServiceImpl.addPerson(AuthenticationServiceImpl.java:117)
+	... 18 more
+
+[clojure-agent-send-off-pool-224] ERROR kouta-indeksoija-service.rest.util - Got  500  from  :GET :  https://virkailija.opintopolku.fi/kouta-backend/hakukohde/1.2.246.562.20.00000000000000039779  with response  {:status 500, :headers {Date Mon, 04 Sep 2023 11:53:09 GMT, Content-Type application/json;charset=utf-8, Content-Length 37, Connection close, Server nginx, Strict-Transport-Security max-age=16180339; includeSubDomains}, :body {"error":"500 Internal Server Error"}, :request-time 16007, :orig-content-encoding nil}
+[clojure-agent-send-off-pool-224] ERROR kouta-indeksoija-service.rest.util - Got  nil  from  :GET :  https://virkailija.opintopolku.fi/kouta-backend/hakukohde/1.2.246.562.20.00000000000000039779  with error:  
+{
+    "error": "500 Internal Server Error"
+}
+[clojure-agent-send-off-pool-224] ERROR kouta-indeksoija-service.indexer.indexable - ID:  1693828373719  Indeksoinnissa  1.2.246.562.20.00000000000000039779  tapahtui virhe. Keskeytetään indeksointi.
+java.lang.Exception: 
+{
+    "error": "500 Internal Server Error"
+}
+	at kouta_indeksoija_service.rest.util$handle_error.invokeStatic(util.clj:48)
+	at kouta_indeksoija_service.rest.util$handle_error.invoke(util.clj:33)
+	at kouta_indeksoija_service.rest.cas.session$cas_authenticated_request_as_json.invokeStatic(session.clj:54)
+	at kouta_indeksoija_service.rest.cas.session$cas_authenticated_request_as_json.invoke(session.clj:48)
+	at clojure.core$partial$fn__5826.invoke(core.clj:2632)
+	at kouta_indeksoija_service.rest.kouta$get_doc.invokeStatic(kouta.clj:47)
+	at kouta_indeksoija_service.rest.kouta$get_doc.invoke(kouta.clj:38)
+	at clojure.lang.AFn.applyToHelper(AFn.java:160)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:665)
+	at clojure.core$apply.invoke(core.clj:660)
+	at clojure.core.memoize$through_STAR_$fn__11394.invoke(memoize.clj:110)
+	at clojure.core.cache$through$fn__11117.invoke(cache.clj:55)
+	at clojure.core.memoize$through_STAR_$fn__11390$fn__11391.invoke(memoize.clj:109)
+	at clojure.core.memoize.RetryingDelay.deref(memoize.clj:47)
+	at clojure.core$deref.invokeStatic(core.clj:2320)
+	at clojure.core$deref.invoke(core.clj:2306)
+	at clojure.core.memoize$cached_function$fn__11458.doInvoke(memoize.clj:234)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.lang.AFunction$1.doInvoke(AFunction.java:31)
+	at clojure.lang.RestFn.invoke(RestFn.java:436)
+	at kouta_indeksoija_service.rest.kouta$get_hakukohde_with_cache.invokeStatic(kouta.clj:67)
+	at kouta_indeksoija_service.rest.kouta$get_hakukohde_with_cache.invoke(kouta.clj:65)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$create_index_entry.invokeStatic(hakukohde.clj:379)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$create_index_entry.invoke(hakukohde.clj:377)
+	at kouta_indeksoija_service.indexer.indexable$handle_errors.invokeStatic(indexable.clj:29)
+	at kouta_indeksoija_service.indexer.indexable$handle_errors.invoke(indexable.clj:27)
+	at kouta_indeksoija_service.indexer.indexable$create_actions$fn__11598.invoke(indexable.clj:39)
+	at clojure.core$pmap$fn__8447$fn__8448.invoke(core.clj:7022)
+	at clojure.core$binding_conveyor_fn$fn__5739.invoke(core.clj:2030)
+	at clojure.lang.AFn.call(AFn.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+[DefaultQuartzScheduler_Worker-1] ERROR kouta-indeksoija-service.queue.queue - Error in receiving indexing messages. Sleeping for 3 seconds and continue polling.
+java.util.concurrent.ExecutionException: java.lang.Exception: 
+{
+    "error": "500 Internal Server Error"
+}
+	at java.base/java.util.concurrent.FutureTask.report(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.get(Unknown Source)
+	at clojure.core$deref_future.invokeStatic(core.clj:2300)
+	at clojure.core$future_call$reify__8439.deref(core.clj:6974)
+	at clojure.core$deref.invokeStatic(core.clj:2320)
+	at clojure.core$deref.invoke(core.clj:2306)
+	at clojure.core$map$fn__5851.invoke(core.clj:2755)
+	at clojure.lang.LazySeq.sval(LazySeq.java:42)
+	at clojure.lang.LazySeq.seq(LazySeq.java:58)
+	at clojure.lang.RT.seq(RT.java:531)
+	at clojure.core$seq__5387.invokeStatic(core.clj:137)
+	at clojure.core$dorun.invokeStatic(core.clj:3133)
+	at clojure.core$doall.invokeStatic(core.clj:3148)
+	at clojure.core$doall.invoke(core.clj:3148)
+	at kouta_indeksoija_service.indexer.indexable$create_actions.invokeStatic(indexable.clj:39)
+	at kouta_indeksoija_service.indexer.indexable$create_actions.invoke(indexable.clj:37)
+	at kouta_indeksoija_service.indexer.indexable$index_chunk.invokeStatic(indexable.clj:47)
+	at kouta_indeksoija_service.indexer.indexable$index_chunk.invoke(indexable.clj:41)
+	at kouta_indeksoija_service.indexer.indexable$do_index$fn__11607.invoke(indexable.clj:56)
+	at clojure.core$map$fn__5851.invoke(core.clj:2755)
+	at clojure.lang.LazySeq.sval(LazySeq.java:42)
+	at clojure.lang.LazySeq.seq(LazySeq.java:51)
+	at clojure.lang.RT.seq(RT.java:531)
+	at clojure.core$seq__5387.invokeStatic(core.clj:137)
+	at clojure.core$seq__5387.invoke(core.clj:137)
+	at clojure.core$tree_seq$walk__6372$fn__6373.invoke(core.clj:4945)
+	at clojure.lang.LazySeq.sval(LazySeq.java:42)
+	at clojure.lang.LazySeq.seq(LazySeq.java:51)
+	at clojure.lang.LazySeq.more(LazySeq.java:87)
+	at clojure.lang.RT.more(RT.java:718)
+	at clojure.core$rest__5373.invokeStatic(core.clj:73)
+	at clojure.core$flatten.invokeStatic(core.clj:7136)
+	at clojure.core$flatten.invoke(core.clj:7136)
+	at kouta_indeksoija_service.indexer.indexable$do_index.invokeStatic(indexable.clj:56)
+	at kouta_indeksoija_service.indexer.indexable$do_index.invoke(indexable.clj:52)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$do_index.invokeStatic(hakukohde.clj:421)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$do_index.invoke(hakukohde.clj:419)
+	at kouta_indeksoija_service.indexer.indexer$index_hakukohteet.invokeStatic(indexer.clj:143)
+	at kouta_indeksoija_service.indexer.indexer$index_hakukohteet.invoke(indexer.clj:141)
+	at kouta_indeksoija_service.indexer.indexer$index_oids.invokeStatic(indexer.clj:262)
+	at kouta_indeksoija_service.indexer.indexer$index_oids.invoke(indexer.clj:246)
+	at kouta_indeksoija_service.queue.queue$handle_messages$fn__22034.invoke(queue.clj:66)
+	at kouta_indeksoija_service.queue.queue$handle_messages.invokeStatic(queue.clj:68)
+	at kouta_indeksoija_service.queue.queue$handle_messages.invoke(queue.clj:62)
+	at kouta_indeksoija_service.queue.queue$handle_messages_from_queues.invokeStatic(queue.clj:56)
+	at kouta_indeksoija_service.queue.queue$handle_messages_from_queues.invoke(queue.clj:48)
+	at kouta_indeksoija_service.queue.queue$handle_messages_from_queues.invokeStatic(queue.clj:51)
+	at kouta_indeksoija_service.queue.queue$handle_messages_from_queues.invoke(queue.clj:48)
+	at kouta_indeksoija_service.queue.queue$index_from_sqs$fn__22041.invoke(queue.clj:74)
+	at kouta_indeksoija_service.queue.queue$index_from_sqs.invokeStatic(queue.clj:74)
+	at kouta_indeksoija_service.queue.queue$index_from_sqs.invoke(queue.clj:70)
+	at kouta_indeksoija_service.scheduled.jobs.sqs-job.execute(jobs.clj:24)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:557)
+Caused by: java.lang.Exception: 
+{
+    "error": "500 Internal Server Error"
+}
+	at kouta_indeksoija_service.rest.util$handle_error.invokeStatic(util.clj:48)
+	at kouta_indeksoija_service.rest.util$handle_error.invoke(util.clj:33)
+	at kouta_indeksoija_service.rest.cas.session$cas_authenticated_request_as_json.invokeStatic(session.clj:54)
+	at kouta_indeksoija_service.rest.cas.session$cas_authenticated_request_as_json.invoke(session.clj:48)
+	at clojure.core$partial$fn__5826.invoke(core.clj:2632)
+	at kouta_indeksoija_service.rest.kouta$get_doc.invokeStatic(kouta.clj:47)
+	at kouta_indeksoija_service.rest.kouta$get_doc.invoke(kouta.clj:38)
+	at clojure.lang.AFn.applyToHelper(AFn.java:160)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:665)
+	at clojure.core$apply.invoke(core.clj:660)
+	at clojure.core.memoize$through_STAR_$fn__11394.invoke(memoize.clj:110)
+	at clojure.core.cache$through$fn__11117.invoke(cache.clj:55)
+	at clojure.core.memoize$through_STAR_$fn__11390$fn__11391.invoke(memoize.clj:109)
+	at clojure.core.memoize.RetryingDelay.deref(memoize.clj:47)
+	at clojure.core$deref.invokeStatic(core.clj:2320)
+	at clojure.core$deref.invoke(core.clj:2306)
+	at clojure.core.memoize$cached_function$fn__11458.doInvoke(memoize.clj:234)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.lang.AFunction$1.doInvoke(AFunction.java:31)
+	at clojure.lang.RestFn.invoke(RestFn.java:436)
+	at kouta_indeksoija_service.rest.kouta$get_hakukohde_with_cache.invokeStatic(kouta.clj:67)
+	at kouta_indeksoija_service.rest.kouta$get_hakukohde_with_cache.invoke(kouta.clj:65)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$create_index_entry.invokeStatic(hakukohde.clj:379)
+	at kouta_indeksoija_service.indexer.kouta.hakukohde$create_index_entry.invoke(hakukohde.clj:377)
+	at kouta_indeksoija_service.indexer.indexable$handle_errors.invokeStatic(indexable.clj:29)
+	at kouta_indeksoija_service.indexer.indexable$handle_errors.invoke(indexable.clj:27)
+	at kouta_indeksoija_service.indexer.indexable$create_actions$fn__11598.invoke(indexable.clj:39)
+	at clojure.core$pmap$fn__8447$fn__8448.invoke(core.clj:7022)
+	at clojure.core$binding_conveyor_fn$fn__5739.invoke(core.clj:2030)
+	at clojure.lang.AFn.call(AFn.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+[clojure-agent-send-off-pool-588] ERROR kouta-indeksoija-service.rest.util - Got  500  from  :GET :  https://virkailija.opintopolku.fi/kouta-backend/haku/1.2.246.562.29.00000000000000038404  with response  {:status 500, :headers {Date Mon, 04 Sep 2023 11:53:10 GMT, Content-Type application/json;charset=utf-8, Content-Length 37, Connection close, Server nginx, Strict-Transport-Security max-age=16180339; includeSubDomains}, :body {"error":"500 Internal Server Error"}, :request-time 16018, :orig-content-encoding nil}
+
+2023-09-04T04:12:37.821+03 ERROR 
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60705] ERROR fi.vm.sade.hakurekisteri.web.ensikertalainen.EnsikertalainenResource: incident c1e19a1f-373f-41f9-a580-00d240974ba9
+java.util.NoSuchElementException: key not found: 1.2.246.562.24.66309794420
+	at scala.collection.MapLike.default(MapLike.scala:235)
+	at scala.collection.MapLike.default$(MapLike.scala:234)
+	at scala.collection.AbstractMap.default(Map.scala:63)
+	at scala.collection.MapLike.apply(MapLike.scala:144)
+	at scala.collection.MapLike.apply$(MapLike.scala:143)
+	at scala.collection.AbstractMap.apply(Map.scala:63)
+	at fi.vm.sade.hakurekisteri.integration.hakemus.HakemusService.$anonfun$enrichAtaruHakemukset$20(HakemusService.scala:477)
+	at scala.collection.immutable.List.map(List.scala:290)
+	at fi.vm.sade.hakurekisteri.integration.hakemus.HakemusService.$anonfun$enrichAtaruHakemukset$19(HakemusService.scala:452)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+2023-09-04T04:12:37.821+03 INFO  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60705] INFO  fi.vm.sade.hakurekisteri.web.ensikertalainen.EnsikertalainenResource: Query Map(haku -> 1.2.246.562.29.00000000000000017098) took 7579 ms, result failure: java.util.NoSuchElementException: key not found: 1.2.246.562.24.66309794420
+2023-09-04T04:12:37.870+03 INFO  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60712] INFO  fi.vm.sade.hakurekisteri.ensikertalainen.EnsikertalainenActor: Haetaan haun 1.2.246.562.29.00000000000000018036 ensikertalaiset, useCache=false
+2023-09-04T04:12:37.871+03 INFO  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60708] INFO  fi.vm.sade.hakurekisteri.ensikertalainen.EnsikertalainenActor: 1.2.246.562.29.00000000000000018036_a3c9ec5b-9155-4c36-b673-59e4b5af27ee: haunEnsikertalaiset: Haun tietojen haku took 1 ms
+2023-09-04T04:12:49.458+03 WARN  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60710] WARN  fi.vm.sade.hakurekisteri.integration.VirkailijaRestClient: slow request: url https://virkailija.testiopintopolku.fi/lomake-editori/api/external/suoritusrekisteri took 11491 ms to complete, result was success, parameters: connectTimeout=10000, requestTimeout=6000000, pooledConnectionIdleTimeout=59000
+2023-09-04T04:12:50.612+03 INFO  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60702] INFO  fi.vm.sade.hakurekisteri.ensikertalainen.EnsikertalainenActor: 1.2.246.562.29.00000000000000018036_a3c9ec5b-9155-4c36-b673-59e4b5af27ee: haunEnsikertalaiset: tutkinnotHakemuksilta haulle 1.2.246.562.29.00000000000000018036 took 12741 ms
+2023-09-04T04:12:50.612+03 WARN  
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60702] WARN  fi.vm.sade.hakurekisteri.web.ensikertalainen.EnsikertalainenResource: Query Map(haku -> 1.2.246.562.29.00000000000000018036) took 12744 ms, result failure: java.util.NoSuchElementException: key not found: 1.2.246.562.24.22488195696
+2023-09-04T04:12:50.613+03 ERROR 
+{}
+ [hakurekisteri-akka.actor.default-dispatcher-60702] ERROR fi.vm.sade.hakurekisteri.web.ensikertalainen.EnsikertalainenResource: incident 38ba2e0b-df2e-4ae2-980c-0a25163aa64c
+java.util.NoSuchElementException: key not found: 1.2.246.562.24.22488195696
+	at scala.collection.MapLike.default(MapLike.scala:235)
+	at scala.collection.MapLike.default$(MapLike.scala:234)
+	at scala.collection.AbstractMap.default(Map.scala:63)
+	at scala.collection.MapLike.apply(MapLike.scala:144)
+	at scala.collection.MapLike.apply$(MapLike.scala:143)
+	at scala.collection.AbstractMap.apply(Map.scala:63)
+	at fi.vm.sade.hakurekisteri.integration.hakemus.HakemusService.$anonfun$enrichAtaruHakemukset$20(HakemusService.scala:477)
+	at scala.collection.immutable.List.map(List.scala:290)
+	at fi.vm.sade.hakurekisteri.integration.hakemus.HakemusService.$anonfun$enrichAtaruHakemukset$19(HakemusService.scala:452)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)

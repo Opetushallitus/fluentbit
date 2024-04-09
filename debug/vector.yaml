@@ -1,0 +1,99 @@
+sources:
+  default:
+    type: stdin
+  audit:
+    type: file
+    file_key: audit
+    include:
+      - /logs/audit*
+      - /logs/auditlog*
+  access:
+    type: file
+    file_key: access
+    include:
+      - /logs/*access*
+      - /logs/access*
+  debug:
+    type: file
+    file_key: debug
+    include:
+      - /logs/*_gc.log*
+  app:
+    type: file
+    include:
+      - /logs/oph*.log
+      - /logs/app*.log
+      - /logs/app*.internal
+      - /logs/catalina0.log
+      - /logs/virkailija.log
+      - /logs/hakija.log
+      - /logs/cas-cas.log
+      - /logs/cas-oppija.log
+      - /logs/ehoks.log
+      - /logs/henkilotietomuutos*.log
+      - /logs/kayttooikeus*.log
+      - /logs/*-console.log
+    multiline:
+      start_pattern: '(^\d+-\d+-\d+.\d+:\d+:\d+.\d+\+?\d?\d?:?\d?\d?|^\[.*\])'
+      mode: halt_before
+      condition_pattern: '(^\d+-\d+-\d+.\d+:\d+:\d+.\d+\+?\d?\d?:?\d?\d?|^\[.*\])'
+      timeout_ms: 1000
+
+  
+
+transforms:
+  app-add-host:
+    type: remap
+    source: |-
+      .service = get_env_var!("SERVICE")
+      .environment = get_env_var!("ENVIRONMENT")
+      .type = "app"
+    inputs:
+      - app
+
+  audit-add-host:
+    type: remap
+    source: |-
+      .service = get_env_var!("SERVICE")
+      .environment = get_env_var!("ENVIRONMENT")
+      .type = "audit"
+    inputs:
+      - audit
+  
+  access-add-host:
+    type: remap
+    source: |-
+      .service = get_env_var!("SERVICE")
+      .environment = get_env_var!("ENVIRONMENT")
+      .type = "access"
+    inputs:
+      - access
+
+  debug-add-host:
+    type: remap
+    source: |-
+      .service = get_env_var!("SERVICE")
+      .environment = get_env_var!("ENVIRONMENT")
+      .type = "debug"
+    inputs:
+      - debug
+  
+  default-add-host:
+    type: remap
+    source: |-
+      .service = get_env_var!("SERVICE")
+      .environment = get_env_var!("ENVIRONMENT")
+      .type = "app"
+    inputs:
+      - default
+
+sinks:
+  cloudwatch-out:
+    inputs:
+      - "*-add-host"
+    type: aws_cloudwatch_logs
+    group_name: "{{ environment }}-{{ type }}-{{ service }}"
+    stream_name: "{{ host }}"
+    encoding:
+      codec: "text"
+  
